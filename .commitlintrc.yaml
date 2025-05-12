@@ -1,0 +1,13 @@
+# SPDX-FileCopyrightText: Copyright DB InfraGO AG and contributors
+# SPDX-License-Identifier: CC0-1.0
+
+rules:
+  subject-case: [2, always, sentence-case]
+  type-enum:
+    [
+      2,
+      always,
+      [feat, fix, docs, refactor, chore, revert],
+    ]
+extends:
+  - '@commitlint/config-conventional'

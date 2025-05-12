@@ -1,0 +1,64 @@
+# SPDX-FileCopyrightText: Copyright DB InfraGO AG and contributors
+# SPDX-License-Identifier: CC0-1.0
+
+default_install_hook_types: [commit-msg, pre-commit]
+default_stages: [pre-commit, pre-merge-commit]
+minimum_pre_commit_version: 3.2.0
+default_language_version:
+  python: python3.12
+repos:
+  - repo: https://github.com/gitleaks/gitleaks.git
+    rev: v8.24.0
+    hooks:
+      - id: gitleaks
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.7
+    hooks:
+      - id: actionlint-docker
+  - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
+    rev: v9.22.0
+    hooks:
+      - id: commitlint
+        stages: [commit-msg]
+        additional_dependencies:
+          - '@commitlint/config-conventional'
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.5.5
+    hooks:
+      - id: insert-license
+        name: Insert Apache 2.0 license headers into go files
+        files: '.*\.(go)$'
+        args:
+          - --detect-license-in-X-top-lines=15
+          - --license-filepath
+          - LICENSES/.license_header_apache.txt
+          - --comment-style
+          - '//'
+      - id: insert-license
+        name: Insert Apache 2.0 license headers into markdown files
+        files: '\.(?:md)$'
+        exclude: '(?:^|/)\..+'
+        args:
+          - --detect-license-in-X-top-lines=15
+          - --license-filepath
+          - LICENSES/.license_header_apache.txt
+          - --comment-style
+          - '<!--| ~| -->'
+      - id: insert-license
+        name: Insert CC0 license headers into config files
+        files: '(.commitlintrc.yaml|.pre-commit-config.yaml)$'
+        args:
+          - --detect-license-in-X-top-lines=15
+          - --license-filepath
+          - LICENSES/.license_header_cc0.txt
+          - --comment-style
+          - '#'
+  - repo: https://github.com/fsfe/reuse-tool
+    rev: v5.0.2
+    hooks:
+      - id: reuse-lint-file
+  - repo: https://github.com/golangci/golangci-lint
+    rev: v2.1.6
+    hooks:
+      - id: golangci-lint-fmt
+      - id: golangci-lint-full
