@@ -38,5 +38,10 @@ func IsPersistentVolumeVolumeModificationSuccessful(ctx context.Context, kube kl
 	if err != nil {
 		return false, errors.Wrap(err, "cannot get events for persistentvolumeclaim")
 	}
-	return len(events.Items) > 0 && events.Items[len(events.Items)-1].Reason == "VolumeModificationSuccessful", nil
+	for _, item := range events.Items {
+		if item.Reason == "VolumeModificationSuccessful" {
+			return true, nil
+		}
+	}
+	return false, nil
 }
