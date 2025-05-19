@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Copyright DB InfraGO AG and contributors
 // SPDX-License-Identifier: Apache-2.0
 
-module github.com/DSD-DBS/kubernetes-e2e-test-framework
+module github.com/dsd-dbs/kubernetes-e2e-test-framework
 
 go 1.23.2
 

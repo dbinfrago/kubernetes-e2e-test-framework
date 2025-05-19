@@ -19,7 +19,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/yaml"
 
-	"github.com/DSD-DBS/kubernetes-e2e-test-framework/klient"
+	"github.com/dsd-dbs/kubernetes-e2e-test-framework/klient"
 )
 
 func hasObjectStatusConditions(o client.Object) bool {

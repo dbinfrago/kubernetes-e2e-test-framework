@@ -19,8 +19,8 @@ import (
 	"time"
 	
 	"sigs.k8s.io/e2e-framework/pkg/features"
-	e2efeatures "github.com/DSD-DBS/kubernetes-e2e-test-framework/features"
-	crossplanefeatures "github.com/DSD-DBS/kubernetes-e2e-test-framework/crossplane/features"
+	e2efeatures "github.com/dsd-dbs/kubernetes-e2e-test-framework/features"
+	crossplanefeatures "github.com/dsd-dbs/kubernetes-e2e-test-framework/crossplane/features"
 )
 
 func FeatureTest(t *testing.T) {
