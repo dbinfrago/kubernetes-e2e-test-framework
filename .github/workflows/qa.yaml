@@ -1,0 +1,25 @@
+# SPDX-FileCopyrightText: Copyright DB InfraGO AG and contributors
+# SPDX-License-Identifier: CC0-1.0
+
+name: QA
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    if: github.actor != 'dependabot[bot]'
+    concurrency:
+      group: commit-check-pr-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+      - name: Run pre-commit hooks
+        uses: pre-commit/action@v3.0.1
+        with:
+          extra_args: --all-files
