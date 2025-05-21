@@ -10,8 +10,8 @@ import (
 	"k8s.io/client-go/util/retry"
 	"sigs.k8s.io/e2e-framework/pkg/envconf"
 
-	"github.com/DSD-DBS/kubernetes-e2e-test-framework/defaults"
-	"github.com/DSD-DBS/kubernetes-e2e-test-framework/klient"
+	"github.com/dsd-dbs/kubernetes-e2e-test-framework/defaults"
+	"github.com/dsd-dbs/kubernetes-e2e-test-framework/klient"
 )
 
 // Exec executes the given command in the specified container and returns

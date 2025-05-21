@@ -18,7 +18,7 @@ import (
 	"sigs.k8s.io/e2e-framework/pkg/envconf"
 	"sigs.k8s.io/e2e-framework/pkg/features"
 
-	"github.com/DSD-DBS/kubernetes-e2e-test-framework/klient"
+	"github.com/dsd-dbs/kubernetes-e2e-test-framework/klient"
 )
 
 // DeleteClaim deletes the given claim object and waits until the object and

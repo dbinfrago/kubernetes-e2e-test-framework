@@ -10,7 +10,7 @@ import (
 	"sigs.k8s.io/e2e-framework/pkg/envconf"
 	"sigs.k8s.io/e2e-framework/pkg/features"
 
-	"github.com/DSD-DBS/kubernetes-e2e-test-framework/klient"
+	"github.com/dsd-dbs/kubernetes-e2e-test-framework/klient"
 )
 
 // AssessKubeFunc is a simplified assess function.
