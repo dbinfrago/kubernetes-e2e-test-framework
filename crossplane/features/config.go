@@ -47,21 +47,24 @@ func WaitIgnoreComposedByCompositionResourceName(names ...string) WaitOption {
 //
 // Extend this list using RegisterKindWithoutCondition
 var groupKindsWithoutConditions = map[schema.GroupKind]interface{}{
-	{Group: "aws.crossplane.io", Kind: "ProviderConfig"}:                          nil,
-	{Group: "gitlab.crossplane.io", Kind: "ProviderConfig"}:                       nil,
-	{Group: "grafana.crossplane.io", Kind: "ProviderConfig"}:                      nil,
-	{Group: "argocd.crossplane.io", Kind: "ProviderConfig"}:                       nil,
-	{Group: "helm.crossplane.io", Kind: "ProviderConfig"}:                         nil,
-	{Group: "kubernetes.crossplane.io", Kind: "ProviderConfig"}:                   nil,
-	{Group: "aws.upbound.io", Kind: "ProviderConfig"}:                             nil,
-	{Group: "rbac.authorization.k8s.io", Kind: "ClusterRole"}:                     nil,
-	{Group: "apiextensions.crossplane.io", Kind: "EnvironmentConfig"}:             nil,
-	{Group: "apiextensions.crossplane.io", Kind: "Usage"}:                         nil,
-	{Group: "eks.cnp.crossplane.io", Kind: "LoadBalancerGarbageCollector"}:        nil,
-	{Group: "eks.cnp.crossplane.io", Kind: "NodeGarbageCollector"}:                nil,
-	{Group: "cloudwatchlogs.cnp.crossplane.io", Kind: "LogGroupGarbageCollector"}: nil,
+	{Group: "aws.crossplane.io", Kind: "ProviderConfig"}:              nil,
+	{Group: "gitlab.crossplane.io", Kind: "ProviderConfig"}:           nil,
+	{Group: "grafana.crossplane.io", Kind: "ProviderConfig"}:          nil,
+	{Group: "argocd.crossplane.io", Kind: "ProviderConfig"}:           nil,
+	{Group: "helm.crossplane.io", Kind: "ProviderConfig"}:             nil,
+	{Group: "kubernetes.crossplane.io", Kind: "ProviderConfig"}:       nil,
+	{Group: "aws.upbound.io", Kind: "ProviderConfig"}:                 nil,
+	{Group: "rbac.authorization.k8s.io", Kind: "ClusterRole"}:         nil,
+	{Group: "apiextensions.crossplane.io", Kind: "EnvironmentConfig"}: nil,
+	{Group: "apiextensions.crossplane.io", Kind: "Usage"}:             nil,
 }
 
 func RegisterKindWithoutCondition(kind schema.GroupKind) {
 	groupKindsWithoutConditions[kind] = nil
+}
+
+func RegisterKindsWithoutCondition(kinds []schema.GroupKind) {
+	for _, kind := range kinds {
+		RegisterKindWithoutCondition(kind)
+	}
 }
