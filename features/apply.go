@@ -27,9 +27,9 @@ import (
 //
 // mod is an optional function that can be given to modify the
 // object before applying it.
-func ApplyObject(o client.Object, mod func(o client.Object)) features.Func {
+func ApplyObject(o client.Object, mods ...func(o client.Object)) features.Func {
 	return Assess(func(ctx context.Context, t *testing.T, cfg *envconf.Config) error {
-		return applyObject(ctx, t, cfg, cfg.Client().Resources().GetControllerRuntimeClient(), o, mod)
+		return applyObject(ctx, t, cfg, cfg.Client().Resources().GetControllerRuntimeClient(), o, mods...)
 	})
 }
 
@@ -38,13 +38,13 @@ func ApplyObject(o client.Object, mod func(o client.Object)) features.Func {
 //
 // It automatically sets the namespace of o to the preconfigured test namespace
 // if o does not already have a namespace set.
-func ApplyObjectWithClient(o client.Object, kube klient.Client, mod func(o client.Object)) features.Func {
+func ApplyObjectWithClient(o client.Object, kube klient.Client, mods ...func(o client.Object)) features.Func {
 	return Assess(func(ctx context.Context, t *testing.T, cfg *envconf.Config) error {
-		return applyObject(ctx, t, cfg, kube.Resources().GetControllerRuntimeClient(), o, mod)
+		return applyObject(ctx, t, cfg, kube.Resources().GetControllerRuntimeClient(), o, mods...)
 	})
 }
 
-func applyObject(ctx context.Context, t *testing.T, cfg *envconf.Config, kube client.Client, o client.Object, mod func(o client.Object)) error {
+func applyObject(ctx context.Context, t *testing.T, cfg *envconf.Config, kube client.Client, o client.Object, mods ...func(o client.Object)) error {
 	// remove any managed fields in request for SSA
 	o.SetManagedFields(nil)
 	o.SetResourceVersion("")
@@ -65,7 +65,7 @@ func applyObject(ctx context.Context, t *testing.T, cfg *envconf.Config, kube cl
 		return errors.Wrap(err, "cannot set GVK from Scheme")
 	}
 
-	if mod != nil {
+	for _, mod := range mods {
 		mod(o)
 	}
 
