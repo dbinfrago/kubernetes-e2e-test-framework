@@ -15,27 +15,29 @@ Use it like so to apply crossplane claims to your cluster and make assertions on
 package coolfeature
 
 import (
+	"context"
 	"testing"
 	"time"
-	
-	"sigs.k8s.io/e2e-framework/pkg/features"
-	e2efeatures "github.com/dsd-dbs/kubernetes-e2e-test-framework/features"
+
 	crossplanefeatures "github.com/dsd-dbs/kubernetes-e2e-test-framework/crossplane/features"
+	e2efeatures "github.com/dsd-dbs/kubernetes-e2e-test-framework/features"
+	"sigs.k8s.io/e2e-framework/pkg/envconf"
+	"sigs.k8s.io/e2e-framework/pkg/features"
 )
 
 func FeatureTest(t *testing.T) {
 	crossplaneClaim := LoadClaimFromYaml(`apiVersion: ...`)
 
-	features.New("Cool Feature")
-	.Setup(e2efeatures.ApplyObject(crossplaneClaim))
-	.Assess("await claim", crossplanefeatures.WaitForClaimReady(crossplaneClaim, 5*time.Minutes))
-	.Assess("check claim status", e2efeatures.Assess(func(ctx context.Context, t *testing.T, cfg *envconf.Config) error {
-		kube := cfg.Client()
-		// Use kube client to check that your claim produces the correct managed resources.
+	features.New("Cool Feature").
+		Setup(e2efeatures.ApplyObject(crossplaneClaim)).
+		Assess("await claim", crossplanefeatures.WaitForClaimReady(crossplaneClaim, 5*time.Minute)).
+		Assess("check claim status", e2efeatures.Assess(func(ctx context.Context, t *testing.T, cfg *envconf.Config) error {
+			kube := cfg.Client()
+			// Use kube client to check that your claim produces the correct managed resources.
 
-		return nil
-	}))
-	.Assess("delete claim", crossplanefeatures.DeleteClaim(crossplaneClaim, 5*time.Minutes))
+			return nil
+		})).
+		Assess("delete claim", crossplanefeatures.DeleteClaim(crossplaneClaim, 5*time.Minute))
 }
 ```
 
