@@ -12,7 +12,7 @@ import (
 	"sigs.k8s.io/e2e-framework/pkg/envconf"
 	"sigs.k8s.io/e2e-framework/pkg/features"
 
-	pod "github.com/dsd-dbs/kubernetes-e2e-test-framework/resources/pod"
+	pod "github.com/dbinfrago/kubernetes-e2e-test-framework/resources/pod"
 )
 
 // AssessExecInPod executes the given command in the specified container and

@@ -9,7 +9,7 @@ import (
 	"github.com/pkg/errors"
 	corev1 "k8s.io/api/core/v1"
 
-	"github.com/dsd-dbs/kubernetes-e2e-test-framework/klient"
+	"github.com/dbinfrago/kubernetes-e2e-test-framework/klient"
 )
 
 // IsPodAvailable determines if the available condition of a pod is fulfilled.

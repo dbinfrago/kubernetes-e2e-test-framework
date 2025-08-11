@@ -12,7 +12,7 @@ import (
 	"k8s.io/apimachinery/pkg/labels"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	"github.com/dsd-dbs/kubernetes-e2e-test-framework/klient"
+	"github.com/dbinfrago/kubernetes-e2e-test-framework/klient"
 )
 
 func GetPodsForDeployment(ctx context.Context, kube klient.Client, name, namespace string) ([]corev1.Pod, error) {

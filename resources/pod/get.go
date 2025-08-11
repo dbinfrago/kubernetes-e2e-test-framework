@@ -9,7 +9,7 @@ import (
 	"github.com/pkg/errors"
 	corev1 "k8s.io/api/core/v1"
 
-	"github.com/dsd-dbs/kubernetes-e2e-test-framework/klient"
+	"github.com/dbinfrago/kubernetes-e2e-test-framework/klient"
 )
 
 func GetPod(ctx context.Context, kube klient.Client, name, namespace string) (*corev1.Pod, error) {

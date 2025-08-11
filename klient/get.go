@@ -10,7 +10,7 @@ import (
 	"k8s.io/client-go/util/retry"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	e2edefaults "github.com/dsd-dbs/kubernetes-e2e-test-framework/defaults"
+	e2edefaults "github.com/dbinfrago/kubernetes-e2e-test-framework/defaults"
 )
 
 // Get is a shorthand to retrieve an object using a [sigs.k8s.io/e2e-framework/klient.Client].
