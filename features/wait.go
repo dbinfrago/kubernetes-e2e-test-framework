@@ -12,7 +12,7 @@ import (
 	"sigs.k8s.io/e2e-framework/pkg/envconf"
 	"sigs.k8s.io/e2e-framework/pkg/features"
 
-	"github.com/dsd-dbs/kubernetes-e2e-test-framework/klient"
+	"github.com/dbinfrago/kubernetes-e2e-test-framework/klient"
 )
 
 // WaitConfig specifies how a waiting assessment should be executed.

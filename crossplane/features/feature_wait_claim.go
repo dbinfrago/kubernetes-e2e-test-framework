@@ -15,8 +15,8 @@ import (
 	"sigs.k8s.io/e2e-framework/pkg/envconf"
 	"sigs.k8s.io/e2e-framework/pkg/features"
 
-	"github.com/dsd-dbs/kubernetes-e2e-test-framework/crossplane/internal/meta"
-	"github.com/dsd-dbs/kubernetes-e2e-test-framework/klient"
+	"github.com/dbinfrago/kubernetes-e2e-test-framework/crossplane/internal/meta"
+	"github.com/dbinfrago/kubernetes-e2e-test-framework/klient"
 )
 
 // WaitForClaimReady is a feature that waits until the claim, composite and

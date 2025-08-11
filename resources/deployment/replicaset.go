@@ -10,7 +10,7 @@ import (
 	appsv1 "k8s.io/api/apps/v1"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	"github.com/dsd-dbs/kubernetes-e2e-test-framework/klient"
+	"github.com/dbinfrago/kubernetes-e2e-test-framework/klient"
 )
 
 func GetActiveReplicaSetForDeployment(ctx context.Context, kube klient.Client, name, namespace string) (*appsv1.ReplicaSet, bool, error) {
