@@ -53,7 +53,10 @@ func WaitFor(waitFunc WaitForFunc, timeout time.Duration, waitOpts ...WaitOption
 		kube := cfg.Client()
 
 		waitCfg := WaitConfig{
-			waitForOptions: []wait.Option{wait.WithTimeout(timeout)},
+			waitForOptions: []wait.Option{
+				wait.WithTimeout(timeout),
+				wait.WithImmediate(),
+			},
 		}
 		waitCfg.Apply(waitOpts)
 
@@ -72,7 +75,10 @@ func WaitFor(waitFunc WaitForFunc, timeout time.Duration, waitOpts ...WaitOption
 func WaitForWithClient(waitFunc WaitForFunc, client klient.Client, timeout time.Duration, waitOpts ...WaitOption) features.Func {
 	return func(ctx context.Context, t *testing.T, cfg *envconf.Config) context.Context {
 		waitCfg := WaitConfig{
-			waitForOptions: []wait.Option{wait.WithTimeout(timeout)},
+			waitForOptions: []wait.Option{
+				wait.WithTimeout(timeout),
+				wait.WithImmediate(),
+			},
 		}
 		waitCfg.Apply(waitOpts)
 

@@ -59,7 +59,10 @@ func DeleteClaim(claim client.Object, timeout time.Duration, waitOpts ...WaitOpt
 		}
 
 		waitCfg := WaitConfig{
-			waitForOptions: []wait.Option{wait.WithTimeout(timeout)},
+			waitForOptions: []wait.Option{
+				wait.WithTimeout(timeout),
+				wait.WithImmediate(),
+			},
 		}
 		waitCfg.Apply(waitOpts)
 
@@ -107,7 +110,10 @@ func deleteClaims(ctx context.Context, t *testing.T, kube klient.Client, claims 
 	}
 
 	waitCfg := WaitConfig{
-		waitForOptions: []wait.Option{wait.WithTimeout(timeout)},
+		waitForOptions: []wait.Option{
+			wait.WithTimeout(timeout),
+			wait.WithImmediate(),
+		},
 	}
 	waitCfg.Apply(waitOpts)
 

@@ -26,7 +26,10 @@ func WaitForClaimReady(claim client.Object, timeout time.Duration, waitOpts ...W
 		kube := cfg.Client()
 
 		waitCfg := WaitConfig{
-			waitForOptions: []wait.Option{wait.WithTimeout(timeout)},
+			waitForOptions: []wait.Option{
+				wait.WithTimeout(timeout),
+				wait.WithImmediate(),
+			},
 		}
 		waitCfg.Apply(waitOpts)
 
