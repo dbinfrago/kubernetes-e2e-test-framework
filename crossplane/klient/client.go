@@ -11,8 +11,8 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	"github.com/dbinfrago/kubernetes-e2e-test-framework/crossplane/resources/connectiondetails"
-	"github.com/dbinfrago/kubernetes-e2e-test-framework/klient"
+	"github.com/dbinfrago/kubernetes-e2e-test-framework/v2/crossplane/resources/connectiondetails"
+	"github.com/dbinfrago/kubernetes-e2e-test-framework/v2/klient"
 )
 
 // NewClientFromClaimConnectionDetails creates a new kube client from a

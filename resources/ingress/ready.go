@@ -8,7 +8,7 @@ import (
 
 	networkingv1 "k8s.io/api/networking/v1"
 
-	"github.com/dbinfrago/kubernetes-e2e-test-framework/klient"
+	"github.com/dbinfrago/kubernetes-e2e-test-framework/v2/klient"
 )
 
 // IsALBAvailable determines if the latest ingress provisioned load balancer is available based on desired number of LBs.

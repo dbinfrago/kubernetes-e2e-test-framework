@@ -19,8 +19,8 @@ import (
 	"testing"
 	"time"
 
-	crossplanefeatures "github.com/dbinfrago/kubernetes-e2e-test-framework/crossplane/features"
-	e2efeatures "github.com/dbinfrago/kubernetes-e2e-test-framework/features"
+	crossplanefeatures "github.com/dbinfrago/kubernetes-e2e-test-framework/v2/crossplane/features"
+	e2efeatures "github.com/dbinfrago/kubernetes-e2e-test-framework/v2/features"
 	"sigs.k8s.io/e2e-framework/pkg/envconf"
 	"sigs.k8s.io/e2e-framework/pkg/features"
 )

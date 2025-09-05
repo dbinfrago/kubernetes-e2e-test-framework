@@ -12,10 +12,10 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	"github.com/dbinfrago/kubernetes-e2e-test-framework/crossplane/internal/meta"
-	"github.com/dbinfrago/kubernetes-e2e-test-framework/internal/json"
-	"github.com/dbinfrago/kubernetes-e2e-test-framework/internal/schema"
-	"github.com/dbinfrago/kubernetes-e2e-test-framework/klient"
+	"github.com/dbinfrago/kubernetes-e2e-test-framework/v2/crossplane/internal/meta"
+	"github.com/dbinfrago/kubernetes-e2e-test-framework/v2/internal/json"
+	"github.com/dbinfrago/kubernetes-e2e-test-framework/v2/internal/schema"
+	"github.com/dbinfrago/kubernetes-e2e-test-framework/v2/klient"
 )
 
 // GetCompositeFromClaim loads the referenced composite from a cluster.
