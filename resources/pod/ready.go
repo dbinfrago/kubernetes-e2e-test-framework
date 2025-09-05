@@ -8,7 +8,7 @@ import (
 
 	corev1 "k8s.io/api/core/v1"
 
-	"github.com/dbinfrago/kubernetes-e2e-test-framework/klient"
+	"github.com/dbinfrago/kubernetes-e2e-test-framework/v2/klient"
 )
 
 // IsPodAvailable determines if the available condition of a pod is fulfilled.

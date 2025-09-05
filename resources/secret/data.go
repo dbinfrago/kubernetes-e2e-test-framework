@@ -8,7 +8,7 @@ import (
 
 	corev1 "k8s.io/api/core/v1"
 
-	"github.com/dbinfrago/kubernetes-e2e-test-framework/klient"
+	"github.com/dbinfrago/kubernetes-e2e-test-framework/v2/klient"
 )
 
 // GetSecretData from a kubernetes secret using the provided client.
