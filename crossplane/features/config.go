@@ -34,6 +34,19 @@ func WaitWithIntervall(intervall time.Duration) WaitOption {
 	}
 }
 
+// WaitWithoutImmeditate makes the WaitFor wait for one interval before checking
+// the condition for the first time.
+// This is flipped from the k8s-e2e-framework default behavior, where immediate
+// must be explicitly enabled. We set immediate as default and is has to be ex-
+// plicitly disabled.
+func WaitWithoutImmediate() WaitOption {
+	return func(c *WaitConfig) {
+		c.waitForOptions = append(c.waitForOptions, func(o *wait.Options) {
+			o.Immediate = false
+		})
+	}
+}
+
 // WaitIgnoreComposedByCompositionResourceName causes the composed resources
 // with the given name to be considered as ready during a WaitFor operation.
 func WaitIgnoreComposedByCompositionResourceName(names ...string) WaitOption {
