@@ -6,10 +6,10 @@ package connectiondetails
 import (
 	"context"
 
-	"github.com/crossplane/crossplane-runtime/pkg/resource"
-	xpclaim "github.com/crossplane/crossplane-runtime/pkg/resource/unstructured/claim"
-	xpcomposed "github.com/crossplane/crossplane-runtime/pkg/resource/unstructured/composed"
-	xpcomposite "github.com/crossplane/crossplane-runtime/pkg/resource/unstructured/composite"
+	"github.com/crossplane/crossplane-runtime/v2/pkg/resource"
+	xpclaim "github.com/crossplane/crossplane-runtime/v2/pkg/resource/unstructured/claim"
+	xpcomposed "github.com/crossplane/crossplane-runtime/v2/pkg/resource/unstructured/composed"
+	xpcomposite "github.com/crossplane/crossplane-runtime/v2/pkg/resource/unstructured/composite"
 	"github.com/pkg/errors"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/client-go/util/retry"
@@ -89,7 +89,7 @@ func FromCompositeObject(ctx context.Context, kube klient.Client, compositeObj c
 // FromComposite fetches the connection details exported as secret by a crossplane
 // composite. It returns nil if no secret object is found or the composite does
 // not contain a reference.
-func FromComposite(ctx context.Context, kube klient.Client, composite resource.Composite) (ConnectionDetails, error) {
+func FromComposite(ctx context.Context, kube klient.Client, composite resource.ConnectionSecretWriterTo) (ConnectionDetails, error) {
 	ref := composite.GetWriteConnectionSecretToReference()
 	if ref == nil {
 		return nil, nil
