@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	xpclaim "github.com/crossplane/crossplane-runtime/pkg/resource/unstructured/claim"
+	xpclaim "github.com/crossplane/crossplane-runtime/v2/pkg/resource/unstructured/claim"
 	"github.com/crossplane/function-sdk-go/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	apimachinerywait "k8s.io/apimachinery/pkg/util/wait"

@@ -6,7 +6,7 @@ package klient
 import (
 	"context"
 
-	"github.com/crossplane/crossplane-runtime/pkg/resource"
+	"github.com/crossplane/crossplane-runtime/v2/pkg/resource"
 	"github.com/pkg/errors"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"sigs.k8s.io/controller-runtime/pkg/client"
@@ -29,7 +29,7 @@ func NewClientFromClaimConnectionDetails(ctx context.Context, kube klient.Client
 // NewClientFromCompositeConnectionDetails creates a new kube client from a
 // kubeconfig that is exposed in connection details secret of a composite
 // resource.
-func NewClientFromCompositeConnectionDetails(ctx context.Context, kube klient.Client, composite resource.Composite, connectionDetailsKey string) (klient.Client, error) {
+func NewClientFromCompositeConnectionDetails(ctx context.Context, kube klient.Client, composite resource.ConnectionSecretWriterTo, connectionDetailsKey string) (klient.Client, error) {
 	connectionDetails, err := connectiondetails.FromComposite(ctx, kube, composite)
 	if err != nil {
 		return nil, errors.Wrap(err, "cannot get cluster connection details")

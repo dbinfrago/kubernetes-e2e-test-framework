@@ -8,14 +8,15 @@ import (
 	"context"
 	"fmt"
 
-	xpv1 "github.com/crossplane/crossplane-runtime/apis/common/v1"
-	xpresource "github.com/crossplane/crossplane-runtime/pkg/resource"
-	xpclaim "github.com/crossplane/crossplane-runtime/pkg/resource/unstructured/claim"
-	xpcomposed "github.com/crossplane/crossplane-runtime/pkg/resource/unstructured/composed"
-	xpcomposite "github.com/crossplane/crossplane-runtime/pkg/resource/unstructured/composite"
+	xpv2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	xpresource "github.com/crossplane/crossplane-runtime/v2/pkg/resource"
+	xpclaim "github.com/crossplane/crossplane-runtime/v2/pkg/resource/unstructured/claim"
+	xpcomposed "github.com/crossplane/crossplane-runtime/v2/pkg/resource/unstructured/composed"
+	xpcomposite "github.com/crossplane/crossplane-runtime/v2/pkg/resource/unstructured/composite"
 	"github.com/pkg/errors"
 	corev1 "k8s.io/api/core/v1"
 	kerrors "k8s.io/apimachinery/pkg/api/errors"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/yaml"
 
@@ -39,10 +40,10 @@ func isObjectSyncedAndReady(o objectWithConditions) bool {
 	if !hasObjectStatusConditions(o) {
 		return true
 	}
-	if o.GetCondition(xpv1.TypeSynced).Status != corev1.ConditionTrue {
+	if o.GetCondition(xpv2.TypeSynced).Status != corev1.ConditionTrue {
 		return false
 	}
-	if o.GetCondition(xpv1.TypeReady).Status != corev1.ConditionTrue {
+	if o.GetCondition(xpv2.TypeReady).Status != corev1.ConditionTrue {
 		return false
 	}
 	return true
@@ -103,6 +104,7 @@ func prettyPrintObjects(objects []client.Object, filter objectFilter) string {
 		if o == nil || (filter != nil && filter(o)) {
 			continue
 		}
+		o.SetManagedFields([]metav1.ManagedFieldsEntry{})
 		raw, err := yaml.Marshal(o)
 		if err != nil {
 			fmt.Fprintf(buf, "---\nerror: marshalling object %s/%s: %s\n", o.GetObjectKind().GroupVersionKind().String(), o.GetName(), err.Error())
