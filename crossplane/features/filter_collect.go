@@ -8,7 +8,7 @@ import (
 	"context"
 	"fmt"
 
-	xpv2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	xpv2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 	xpresource "github.com/crossplane/crossplane-runtime/v2/pkg/resource"
 	xpclaim "github.com/crossplane/crossplane-runtime/v2/pkg/resource/unstructured/claim"
 	xpcomposed "github.com/crossplane/crossplane-runtime/v2/pkg/resource/unstructured/composed"
