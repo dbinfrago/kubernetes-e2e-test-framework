@@ -70,5 +70,5 @@ func getComposed(ctx context.Context, kube klient.Client, claimName, claimNamesp
 		u.SetUnstructuredContent(foundComposed.Object)
 		return nil
 	}
-	return json.Convert(foundComposed, composed)
+	return json.Convert(&foundComposed, composed)
 }
